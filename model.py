@@ -23,7 +23,7 @@ def get_recommendations(data,title, cosine_sim,indices):
     sim_scores = sim_scores[1:20]
     movie_indices = [i[0] for i in sim_scores]
 
-    return data['title'].iloc[movie_indices]
+    return data['id'].iloc[movie_indices]
 
 def run_model(movie_title):
     data = pd.read_csv('tmdb_movie_info.csv')
@@ -44,7 +44,7 @@ def run_model(movie_title):
     data = data.reset_index()
     indices = pd.Series(data.index, index=data['title'])
 
-    return get_recommendations(data,movie_title, cosine_sim2, indices)
+    return list(get_recommendations(data,movie_title, cosine_sim2, indices))
 
 def main():
     recommendations = run_model("Bullet to the Head")
