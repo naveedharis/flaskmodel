@@ -1,9 +1,19 @@
-from flask import Flask
+from flask import Flask, request
 from model import run_model
+import json
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/') 
+def index(): 
+    return "Flask server" 
+
+@app.route("/entermovietitle", methods=['POST'])
 def hello_world():
-    results = run_model("Bullet to the Head")
-    return f"<p>{results}</p>"
+    data = request.get_json()
+    results = run_model(data['title'])
+    #print(results)
+    return results
+
+if __name__ == "__main__": 
+	app.run(port=5000) 
