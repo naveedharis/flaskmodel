@@ -13,7 +13,7 @@ def index():
 def hello_world():
     data = request.get_json()
     results = run_model(data['title'])
-    #print(results)
+    print(results)
     return results
 
 if __name__ == "__main__": 
