@@ -13,8 +13,8 @@ def index():
 def hello_world():
     data = request.get_json()
     results = run_model(data['title'])
-    print(results)
+    #print(results)
     return results
 
 if __name__ == "__main__": 
-	serve(app, host="0.0.0.0", port=3000)
+	app.run()
