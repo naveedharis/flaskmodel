@@ -1,6 +1,7 @@
 from flask import Flask, request
 from model import run_model
 import json
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -16,4 +17,4 @@ def hello_world():
     return results
 
 if __name__ == "__main__": 
-	app.run() 
+	serve(app, host="0.0.0.0", port=3000)
