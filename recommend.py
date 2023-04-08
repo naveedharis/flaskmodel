@@ -8,7 +8,7 @@ app = Flask(__name__)
 #    return "Flask server" 
 
 #@app.route("/entermovietitle", methods=['POST'])
-@app.route("/", methods=['POST'])
+@app.route("/", methods=['GET','POST'])
 def recommend_movie():
     data = request.get_json()
     results = run_model(data['title'])
