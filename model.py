@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import scipy.sparse 
 
 
 def get_recommendations(data,title, cosine_sim,indices):
@@ -16,8 +17,9 @@ def get_recommendations(data,title, cosine_sim,indices):
 def run_model(movie_title):
     data = pd.read_csv('movie_model.csv', encoding='utf-8')
 
-    count = CountVectorizer(stop_words='english')
-    count_matrix = count.fit_transform(data['soup'])
+    #count = CountVectorizer(stop_words='english')
+    #count_matrix = count.fit_transform(data['soup'])
+    count_matrix = scipy.sparse.load_npz('count_matrix.npz')
     cosine_sim2 = cosine_similarity(count_matrix, count_matrix)
 
     data = data.reset_index()
