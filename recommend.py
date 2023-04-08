@@ -16,6 +16,3 @@ def recommend_movie():
     results = run_model(data['title'])
     #print(results)
     return results
-
-if __name__ == "__main__": 
-	app.run()
