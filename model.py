@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -27,9 +26,9 @@ def run_model(movie_title):
 
     return list(get_recommendations(data,movie_title, cosine_sim2, indices))
 
-def main():
-    recommendations = run_model("Bullet to the Head")
-    print(recommendations)
+#def main():
+ #   recommendations = run_model("Bullet to the Head")
+ #   print(recommendations)
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+    #main()
