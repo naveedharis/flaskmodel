@@ -1,7 +1,5 @@
 from flask import Flask, request
 from model import run_model
-import json
-from waitress import serve
 
 app = Flask(__name__)
 
