@@ -14,11 +14,12 @@ def get_recommendations(data,title, cosine_sim,indices):
 
     return data['id'].iloc[movie_indices]
 
-def run_model(id, movie_title):
+def run_model(movie_id, movie_title):
     data = pd.read_csv('movie_model.csv', encoding='utf-8')
     movie_list = list()
-    if id not in data['id']:
-        recommendationresponse = requests.get(f'https://api.themoviedb.org/3/movie/{id}/recommendations?api_key={API_key}&language=en-US&page=1').json()
+    if movie_id not in data['id']:
+        print("Id not in csv")
+        recommendationresponse = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key={API_key}&language=en-US&page=1').json()
         if 'results' in recommendationresponse.keys():
             for result in recommendationresponse['results']:
                 movie_list.append(result['id'])
@@ -34,9 +35,9 @@ def run_model(id, movie_title):
 
     return list(get_recommendations(data,movie_title, cosine_sim2, indices))
 
-def main():
-    recommendations = run_model(244580,"Low Down")
-    print(recommendations)
+#def main():
+    #recommendations = run_model(98857,"Low Down")
+    #print(recommendations)
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+    #main()
