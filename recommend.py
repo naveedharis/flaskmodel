@@ -11,5 +11,6 @@ app = Flask(__name__)
 @app.route("/", methods=['GET','POST'])
 def recommend_movie():
     data = request.get_json()
-    results = run_model(data['title'])
+    print(data)
+    results = run_model(data['movieId'],data['title'])
     return results
