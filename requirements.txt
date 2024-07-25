@@ -4,3 +4,4 @@ Flask
 scikit-learn
 flask-sqlalchemy
 waitress
+security==1.3.0
