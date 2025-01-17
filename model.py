@@ -19,7 +19,7 @@ def run_model(movie_id, movie_title):
     movie_list = list()
     if movie_id not in data['id']:
         print("Id not in csv")
-        recommendationresponse = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key={API_key}&language=en-US&page=1').json()
+        recommendationresponse = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key={API_key}&language=en-US&page=1', timeout=60).json()
         if 'results' in recommendationresponse.keys():
             for result in recommendationresponse['results']:
                 movie_list.append(result['id'])
