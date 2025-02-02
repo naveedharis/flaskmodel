@@ -2,7 +2,8 @@ import pandas as pd
 #from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import scipy.sparse 
-import requests
+from security import safe_requests
+
 API_key = '89e8071cdf777af6e727e4cac6f685f9'
 
 def get_recommendations(data,title, cosine_sim,indices):
@@ -19,7 +20,7 @@ def run_model(movie_id, movie_title):
     movie_list = list()
     if movie_id not in data['id']:
         print("Id not in csv")
-        recommendationresponse = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key={API_key}&language=en-US&page=1').json()
+        recommendationresponse = safe_requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key={API_key}&language=en-US&page=1').json()
         if 'results' in recommendationresponse.keys():
             for result in recommendationresponse['results']:
                 movie_list.append(result['id'])
